@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Weather forcast in {{Title}} at {{Start_Time}} to {{End_Time}}</title>
+
+
+</head>
+<body>
+    <h1>Weather forcast in {{Title}} at {{Start_Time}} to {{End_Time}}</h1>
+    <ul>
+    {% for dayForcast, values in Week_Forcast %}
+        <li>
+            <p>{{ dayForcast}} : Max temp: {{values[0]}} Min Temp: {{values[1]}}  Humidity: {{values[2]}}</p>
+        </li>
+    {% endfor %}
+    </ul>
+
+</body>
+<script>
+
+// Stop the form resubmission on page refresh
+
+if ( window.history.replaceState ) {
+
+    window.history.replaceState( null, null, window.location.href );
+
+}
+
+</script>
+</html>

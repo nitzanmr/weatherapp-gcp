@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{ title }}</title>
+    <style>
+        body {
+            font-family: sans-serif;
+            margin: 20px;
+            background-color: #f4f4f4;
+        }
+        h1 {
+            color: #333;
+            text-align: center;
+        }
+        ul {
+            list-style: none;
+            padding: 0;
+            background-color: #fff;
+            border-radius: 5px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+            margin-top: 20px;
+        }
+        li {
+            padding: 12px 15px;
+            border-bottom: 1px solid #eee;
+        }
+        li:last-child {
+            border-bottom: none;
+        }
+        a {
+            text-decoration: none;
+            color: #007bff;
+            font-weight: bold;
+        }
+        a:hover {
+            text-decoration: underline;
+        }
+        p {
+            text-align: center;
+            color: #555;
+            margin-top: 20px;
+        }
+        .home-link {
+            display: block;
+            text-align: center;
+            margin-top: 20px;
+            color: #555;
+        }
+        .home-link:hover {
+             color: #000;
+        }
+    </style>
+</head>
+<body>
+
+    <h1>{{ title }}</h1>
+
+    {% if query_files %}
+        <ul>
+            {% for filename in query_files %}
+                <li>
+                    <a href="{{ url_for('download_file', filename=filename) }}">{{ filename }}</a>
+                </li>
+            {% endfor %}
+        </ul>
+    {% else %}
+        <p>No query history found.</p>
+    {% endif %}
+
+    <a href="{{ url_for('home') }}" class="home-link">Back to Home</a>
+
+</body>
+</html>

@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>{{ title }}</title>
+  <style>
+    body {
+      /* Use the bg_color variable passed from Flask */
+      background-color: {{ bg_color | safe }}; /* Use 'safe' filter if color values might contain chars needing escaping, though unlikely for standard colors */
+      font-family: sans-serif;
+      padding: 20px;
+    }
+    h1 {
+        text-align: center;
+        color: #333;
+    }
+    .form-container {
+        text-align: center;
+        margin-top: 20px;
+    }
+    label {
+        margin-right: 5px;
+    }
+    input[type="text"] {
+        padding: 8px;
+        border: 1px solid #ccc;
+        border-radius: 4px;
+    }
+    button, .button-link {
+        padding: 8px 15px;
+        margin-left: 10px;
+        border: none;
+        border-radius: 4px;
+        cursor: pointer;
+        font-size: 1em;
+        vertical-align: middle;
+    }
+    #submitButton {
+        background-color: #007bff;
+        color: white;
+    }
+    #submitButton:hover {
+        background-color: #0056b3;
+    }
+    .button-link {
+        display: inline-block;
+        background-color: #6c757d;
+        color: white;
+        text-decoration: none;
+    }
+    .button-link:hover {
+        background-color: #5a6268;
+        color: white;
+    }
+  </style>
+</head>
+<body>
+  <h1>Welcome to {{ title }}!</h1>
+
+  <div class="form-container">
+    <form action="{{ url_for('get_results') }}" method="get">
+        <label for="CountryName">Country name:</label>
+        <input type="text" id="CountryName" name="Country_Name" required>
+        <button id="submitButton" type="submit">Submit</button>
+        <a href="{{ url_for('history') }}" class="button-link">View History</a>
+    </form>
+  </div>
+
+</body>
+</html>
